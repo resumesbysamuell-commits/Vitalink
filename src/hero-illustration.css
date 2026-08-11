@@ -1,0 +1,108 @@
+/* Add this to src/index.css (or a HeroIllustration.css imported by the component) */
+
+.hero-illustration {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Soft floating gradient blobs behind everything */
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.35;
+  animation: heroFloat 8s ease-in-out infinite;
+}
+.hero-blob--1 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #0EC176, transparent 70%);
+  top: -20px;
+  left: 10%;
+  animation-delay: 0s;
+}
+.hero-blob--2 {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #049FF3, transparent 70%);
+  bottom: -30px;
+  right: 12%;
+  animation-delay: 2.5s;
+}
+
+/* Heartbeat pulse line, drawn on load then gently pulsing */
+.hero-pulse {
+  position: relative;
+  width: 70%;
+  max-width: 420px;
+  z-index: 2;
+}
+.hero-pulse-path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: heroDraw 2.2s ease-out forwards, heroPulseGlow 3s ease-in-out 2.2s infinite;
+}
+
+/* Floating leaf + link icons */
+.hero-float {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  z-index: 3;
+  animation: heroBob 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 6px 14px rgba(22, 36, 26, 0.12));
+}
+.hero-float--leaf {
+  top: 12%;
+  left: 15%;
+  animation-delay: 0.3s;
+}
+.hero-float--link {
+  bottom: 10%;
+  right: 14%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 1.6s;
+}
+
+/* Small drifting dots for extra life */
+.hero-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: heroBob 5s ease-in-out infinite;
+}
+.hero-dot--1 { width: 10px; height: 10px; background: #83D40E; top: 30%; right: 30%; animation-delay: 0.8s; }
+.hero-dot--2 { width: 7px; height: 7px; background: #049FF3; bottom: 25%; left: 28%; animation-delay: 2s; }
+.hero-dot--3 { width: 8px; height: 8px; background: #0EC176; top: 55%; right: 12%; animation-delay: 1.2s; }
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-16px) scale(1.05); }
+}
+
+@keyframes heroBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes heroDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes heroPulseGlow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(14,193,118,0)); }
+  50% { filter: drop-shadow(0 0 8px rgba(14,193,118,0.5)); }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob, .hero-float, .hero-dot, .hero-pulse-path {
+    animation: none !important;
+  }
+  .hero-pulse-path { stroke-dashoffset: 0; }
+}
