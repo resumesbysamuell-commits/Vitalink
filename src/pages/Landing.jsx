@@ -8,7 +8,7 @@ export function Landing({ onStart, onHome }) {
       <header className="px-6 py-4 flex justify-between items-center border-b border-[var(--color-border)] sticky top-0 bg-white z-10">
         <Logo onClick={onHome} />
         <button
-          className="bg-[var(--color-vital-green)] hover:bg-[var(--color-deep-green)] text-white font-medium px-6 py-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-vital-green)]"
+          className="bg-[var(--color-vital-green)] hover:bg-[var(--color-deep-green)] text-white font-medium px-6 py-2 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-vital-green)] min-h-[44px]"
           onClick={onStart}
         >
           Get Started
@@ -21,7 +21,7 @@ export function Landing({ onStart, onHome }) {
           Your AI Wellness Companion
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-ink)] mb-6 font-poppins">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[var(--color-ink)] mb-6 font-poppins">
           Discover your personalized path to better wellness
         </h1>
 
@@ -30,7 +30,9 @@ export function Landing({ onStart, onHome }) {
           a guide to begin your journey.
         </p>
 
-        <HeroIllustration />
+        <div className="w-full max-w-[90vw] sm:max-w-lg mx-auto relative my-8 overflow-hidden flex justify-center">
+          <HeroIllustration />
+        </div>
 
         <div className="mt-10">
           <button

@@ -16,7 +16,7 @@ export function GoalSelect({ onSelectGoal, onHome }) {
           <p className="text-[var(--color-ink-soft)]">Select one to see our suggestions.</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {goals.map((goal) => {
             const Icon = Icons[goal.icon];
             return (

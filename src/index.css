@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./hero-illustration.css";
 
 @theme {
   --color-vital-green: #0EC176;

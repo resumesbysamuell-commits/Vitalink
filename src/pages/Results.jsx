@@ -2,9 +2,11 @@ import React from 'react';
 import { Logo } from '../components/Logo';
 import { DisclaimerBanner } from '../components/DisclaimerBanner';
 import { WhatsAppButton } from '../components/WhatsAppButton';
+import * as Icons from 'lucide-react';
 
 export function Results({ goal, onBack, onHome }) {
   if (!goal) return null;
+  const GoalIcon = Icons[goal.icon];
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-tint)] flex flex-col">
@@ -12,18 +14,20 @@ export function Results({ goal, onBack, onHome }) {
         <Logo onClick={onHome} />
         <button 
           onClick={onBack}
-          className="text-sm font-medium text-[var(--color-sky-blue)] hover:text-[var(--color-deep-green)] transition-colors focus:outline-none focus:underline"
+          className="text-sm font-medium text-[var(--color-sky-blue)] hover:text-[var(--color-deep-green)] transition-colors focus:outline-none min-h-[44px] flex items-center px-2"
         >
-          Change Goal
+          Back to goals
         </button>
       </header>
 
       <main className="flex-1 px-4 py-8 max-w-xl mx-auto w-full">
         <div className="mb-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white border border-[var(--color-border)] text-3xl mb-4 shadow-sm">
-            {goal.icon}
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--color-vital-green)]/10 text-[var(--color-vital-green)] mb-4">
+            {GoalIcon && <GoalIcon size={32} strokeWidth={2} />}
           </div>
-          <h1 className="text-3xl font-bold text-[var(--color-ink)] mb-2">{goal.name}</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-2">
+            Suggestions for: {goal.name}
+          </h1>
           <p className="text-[var(--color-ink-soft)]">
             Here are some suggestions often associated with supporting your {goal.name.toLowerCase()} goals.
           </p>
@@ -31,14 +35,14 @@ export function Results({ goal, onBack, onHome }) {
 
         <div className="space-y-4 mb-8">
           {goal.products.map((product, idx) => (
-            <div key={idx} className="bg-white p-5 rounded-[14px] border border-[var(--color-border)] shadow-sm">
+            <div key={idx} className="bg-white p-6 rounded-[14px] border border-[var(--color-border)] hover:border-[var(--color-border)] hover:shadow-md transition-all group">
               <div className="flex items-start gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[var(--color-lime)] mt-1.5 shrink-0"></span>
+                <Icons.Sparkles size={20} className="text-[var(--color-vital-green)] shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-semibold text-lg text-[var(--color-ink)] mb-1">
+                  <h3 className="font-semibold text-lg text-[var(--color-ink)] group-hover:text-[var(--color-deep-green)] transition-colors mb-1">
                     {product.name}
                   </h3>
-                  <p className="text-[var(--color-ink-soft)] leading-relaxed">
+                  <p className="text-[var(--color-ink-soft)] leading-relaxed text-sm sm:text-base">
                     {product.description}
                   </p>
                 </div>
